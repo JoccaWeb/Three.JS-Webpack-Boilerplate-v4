@@ -22,7 +22,9 @@ box; // for separate Box classfile
 // custom global variables
 // floor; testBox, testSphere;
 
+///////////////
 // FUNCTIONS //
+///////////////
 
 function init() {
     
@@ -74,7 +76,7 @@ function init() {
 
     ////////////////////
     // ORBIT CONTROLS //
-	////////////////////
+    ////////////////////
 
     // setup the Orbit Controls, see README.md
     var controls = new OrbitControls(camera, renderer.domElement);
@@ -82,9 +84,9 @@ function init() {
     controls.dampingFactor = 0.25;
     controls.enableZoom = true;
 
-	///////////
+    ///////////
     // LIGHT //
-	///////////
+    ///////////
 
     // Lambert materials go black with no lights on, as opposed to Basic materials, who you could say have a default 100% ambient light
 	
@@ -167,7 +169,7 @@ function drawTestSphere() {
     // sphere nicely aligned on the floor with these values
     // sphere.position.set( 100, 50, -50 );
     // sphere.rotation.set( 0, 0, 0 );
-    // these values can be changed without losing the reset coordinates above
+    // these values can be changed without losing the reset coordinates above (obviously ;-)
     testSphere.position.set( 100, 50, -50 );
     testSphere.rotation.set( 0, 0, 0 );
     
