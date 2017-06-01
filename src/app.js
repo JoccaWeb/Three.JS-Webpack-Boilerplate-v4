@@ -1,5 +1,4 @@
 // Three.JS Webpack Boilerplate Joccaweb V4
-// Note: Have to finish the README.md file for GitHub
 
 import css from './app.scss';
 
