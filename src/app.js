@@ -19,9 +19,6 @@ let scene, camera, renderer, world,
 
 box; // for separate Box classfile
 
-// custom global variables
-// floor; testBox, testSphere;
-
 ///////////////
 // FUNCTIONS //
 ///////////////
@@ -43,10 +40,10 @@ function init() {
     var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;
     
     // main camera attributes
-	var VIEW_ANGLE = 45, 
-        ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT,
-        NEAR = 0.1,
-        FAR = 20000;
+    var VIEW_ANGLE = 45, 
+    ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT,
+    NEAR = 0.1,
+    FAR = 20000;
 
     // setup camera
     camera = new THREE.PerspectiveCamera( 
@@ -55,7 +52,7 @@ function init() {
     // scene.add(camera);
 
     // the camera defaults to position (0,0,0)
-	// so pull it back (z = 400) and up (y = 100) and set the angle towards the scene origin    
+    // so pull it back (z = 400) and up (y = 100) and set the angle towards the scene origin    
     camera.position.set( 0, 150, 400 );
     camera.lookAt( scene.position );   
     
@@ -100,7 +97,7 @@ function init() {
     // #5b5b5b is about 35% black (or 65% white)
     // check how ambient light works together with the other lights
     var ambientLight = new THREE.AmbientLight( 0x5b5b5b );
-	scene.add(ambientLight);
+    scene.add(ambientLight);
   
     /////////////
     // OBJECTS //
