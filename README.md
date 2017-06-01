@@ -28,7 +28,7 @@ OrbitControls.js contains 1040 lines of code, no point in reinventing the wheel 
 So I copied OrbitControls.js to src/js, imported it in app.js, and added a global variable. Did it work? No!<br>
 OrbitControls keeps being undefined because of THREE being in the local scope or not or alledgedly, ah well...
 
-Anyhoo: [three-orbitcontrols](https://www.npmjs.com/package/three-orbitcontrols) works!.
+Anyhoo: [three-orbitcontrols](https://www.npmjs.com/package/three-orbitcontrols) works!
 
 `OO programming and three.js`<br>
 The [Dino Skater](https://codepen.io/elliepooh/pen/JNjgwy) example was handy for brushing up on the basics of OO programming, which is very much needed for three.js scenes.
