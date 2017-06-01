@@ -21,13 +21,14 @@ On [NPMJS.com](https://www.npmjs.com/package/three-window-resize) we can see the
 These controls enable the user to rotate, pan and zoom the scene with mouse and keys (and trackpad and touch). Installing through NPM didn't work earlier. Here the second attempt:<br>[three-orbitcontrols](https://www.npmjs.com/package/three-orbitcontrols) or [three-orbit-controls](https://www.npmjs.com/package/three-orbit-controls)?<br>
 
 Or without NPM:<br>
-From [The controls files from three.js](https://github.com/mrdoob/three.js/tree/master/examples/js/controls) to
+From [the controls files from three.js](https://github.com/mrdoob/three.js/tree/master/examples/js/controls) you can go to
 [the Orbit Controls file](https://github.com/mrdoob/three.js/blob/master/examples/js/controls/OrbitControls.js).
 
 OrbitControls.js contains 1040 lines of code, no point in reinventing the wheel i'd say.<br>
-I copied OrbitControls.js to src/js, imported it in app.js, and added a global variable. See app.js. It works? No! OrbitControls keeps being undefined because of THREE being in the local scope or not or alledgedly, ah well...
+So I copied OrbitControls.js to src/js, imported it in app.js, and added a global variable. Did it work? No!<br>
+OrbitControls keeps being undefined because of THREE being in the local scope or not or alledgedly, ah well...
 
-Anyhoo: [three-orbitcontrols](https://www.npmjs.com/package/three-orbitcontrols) works!. See app.js for the import, variable and CONTROLS code.
+Anyhoo: [three-orbitcontrols](https://www.npmjs.com/package/three-orbitcontrols) works!.
 
 `OO programming and three.js`<br>
 The [Dino Skater](https://codepen.io/elliepooh/pen/JNjgwy) example was handy for brushing up on the basics of OO programming, which is very much needed for three.js scenes.
