@@ -16,10 +16,13 @@ import Box from './js/Box';
 // Global variables, brushing up:
 // For example, variable scene must be global 'cause it's used in functions outside of init(), in drawFloor() for example.
 var scene, camera, renderer;
-// The lights need no global variable for now. For example, if a spotlight needs to be animated, a light variable would turn up in the render() function and then global declaration is needed.
+// The lights need no global variable for now. For example, if a spotlight needs to be animated, 
+// a light variable would turn up in the render() function and then global declaration is needed.
 // testBox is animated now, must be declared globally
 var testBox;
-// Note: the variable box from the Box class is used in the drawClassBox() function, it's coupled to the classBox variable and doesn't have to be declared globally here. The variable classBox itself also not, unless classBox is gonna be used in other functions.
+// Note: the variable box from the Box class is used in the drawClassBox() function, 
+// it's coupled to the classBox variable and doesn't have to be declared globally here. 
+// The variable classBox itself also not, unless classBox is gonna be used in other functions.
 // Note: classes are es2015 and this babel-webpack installation transpiles the code to regular JavaScript.
 
 
@@ -88,9 +91,9 @@ function init() {
     controls.dampingFactor = 0.25;
     controls.enableZoom = true;
 
-	///////////
+    ///////////
     // LIGHT //
-	///////////
+    ///////////
 
     // Lambert materials go black with no lights on, as opposed to Basic materials, who you could say have a default 100% ambient light
 	
