@@ -1,6 +1,4 @@
 // Three.JS Webpack Boilerplate Joccaweb V4
-// Note: Have to activate SourceControl on this project
-// (first upload the changed files, then download the whole project to the local GitHub dir, then backup the GitHub Project to usb stick, then remove the project from the Frontend/Projects dir)
 
 import css from './app.scss';
 
