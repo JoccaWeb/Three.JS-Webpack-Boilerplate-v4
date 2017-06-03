@@ -1,4 +1,7 @@
 import * as THREE from 'three';
+
+console.log( 'Box class is present' );
+
 // the export default prefix is needed because of ES2015, Babel and Webpack as far as i understand
 export default class Box {
     constructor() {
@@ -6,6 +9,6 @@ export default class Box {
             new THREE.BoxGeometry( 30, 30, 50, 1, 1, 1 ),
             new THREE.MeshLambertMaterial( { color: 0x375076 })
         );
-        this.box.position.set( 0, 15, -15 );
+       
     }    
 }
