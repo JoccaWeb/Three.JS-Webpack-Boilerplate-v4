@@ -1,4 +1,6 @@
 // Three.JS Webpack Boilerplate Joccaweb V4
+// Note: Have to activate SourceControl on this project
+// (first upload the changed files, then download the whole project to the local GitHub dir, then backup the GitHub Project to usb stick, then remove the project from the Frontend/Projects dir)
 
 import css from './app.scss';
 
@@ -13,15 +15,18 @@ import Box from './js/Box';
 // MAIN //
 //////////
 
-// standard global variables
-let scene, camera, renderer, world,
-// (lights need no external variable (for now?))
+// Global variables, brushing up:
+// For example, variable scene must be global 'cause it's used in functions outside of init(), in drawFloor() for example.
+var scene, camera, renderer,
+// The lights need no global variable for now. For example, if a spotlight needs to be animated, a light variable would turn up in the render() function and then global declaration is needed.
+// testBox is animated now, must be declared globally
+testBox;
+// Note: the variable box from the Box class is used in the drawClassBox() function, it's coupled to the classBox variable and doesn't have to be declared globally here. The variable classBox itself also not, unless classBox is gonna be used in other functions.
 
-box; // for separate Box classfile
 
-///////////////
-// FUNCTIONS //
-///////////////
+////////////////////////
+// MAIN INIT FUNCTION //
+////////////////////////
 
 function init() {
     
@@ -30,6 +35,7 @@ function init() {
     ///////////
 
     scene = new THREE.Scene();
+    // brushing up: no var keyword, var already globally declared
 
     ////////////
     // CAMERA //
@@ -40,10 +46,10 @@ function init() {
     var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;
     
     // main camera attributes
-    var VIEW_ANGLE = 45, 
-    ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT,
-    NEAR = 0.1,
-    FAR = 20000;
+	var VIEW_ANGLE = 45, 
+        ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT,
+        NEAR = 0.1,
+        FAR = 20000;
 
     // setup camera
     camera = new THREE.PerspectiveCamera( 
@@ -52,7 +58,7 @@ function init() {
     // scene.add(camera);
 
     // the camera defaults to position (0,0,0)
-    // so pull it back (z = 400) and up (y = 100) and set the angle towards the scene origin    
+	// so pull it back (z = 400) and up (y = 100) and set the angle towards the scene origin    
     camera.position.set( 0, 150, 400 );
     camera.lookAt( scene.position );   
     
@@ -64,16 +70,18 @@ function init() {
     // using Detector.js for WebGL detection in this project (see README.md)
 
     // renderer = new THREE.WebGLRenderer( { antialias: true } );
-    renderer = Detector.webgl? new THREE.WebGLRenderer ( { antialias: true } ): new THREE.CanvasRenderer();
+    renderer = Detector.webgl? new THREE.WebGLRenderer ( {
+            antialias: true
+        } ): new THREE.CanvasRenderer();
     
     renderer.setSize( SCREEN_WIDTH, SCREEN_HEIGHT );    
 
-    world = document.querySelector( '.world' );
+    var world = document.querySelector( '.world' );
     world.appendChild( renderer.domElement );
 
     ////////////////////
     // ORBIT CONTROLS //
-    ////////////////////
+	////////////////////
 
     // setup the Orbit Controls, see README.md
     var controls = new OrbitControls(camera, renderer.domElement);
@@ -81,9 +89,9 @@ function init() {
     controls.dampingFactor = 0.25;
     controls.enableZoom = true;
 
-    ///////////
+	///////////
     // LIGHT //
-    ///////////
+	///////////
 
     // Lambert materials go black with no lights on, as opposed to Basic materials, who you could say have a default 100% ambient light
 	
@@ -97,7 +105,7 @@ function init() {
     // #5b5b5b is about 35% black (or 65% white)
     // check how ambient light works together with the other lights
     var ambientLight = new THREE.AmbientLight( 0x5b5b5b );
-    scene.add(ambientLight);
+	scene.add(ambientLight);
   
     /////////////
     // OBJECTS //
@@ -117,7 +125,11 @@ function init() {
     // resize to whole viewport on changing viewport
     window.addEventListener( 'resize', onResize );
 }
-// end of init function
+// end init function
+
+//////////////////////
+// OBJECT FUNCTIONS //
+//////////////////////
 
 function drawFloor() {
     var floor = new THREE.Mesh(  
@@ -139,19 +151,20 @@ function drawFloor() {
 }
 
 function drawTestBox() {
-    // box parameters: width (x), height (y), depth (z), 
+    // BoxGeometry parameters: width (x), height (y), depth (z), 
 	// (optional) segments along x, segments along y, segments along z    
-    var testBox = new THREE.Mesh(
+    // mesh, geometry and material could be abstracted away to a class,like the Box class. Position and other properties too, we can decide for ourselves if that's convenient or not.
+    testBox = new THREE.Mesh(
         new THREE.BoxGeometry( 100, 100, 100, 1, 1, 1 ),
         new THREE.MeshLambertMaterial( { color: 0x00ff00 } )
     );
     
-    // box nicely aligned on the floor with these values
-    // box.position.set( -100, 50, -50 );
-    // box.rotation.set( 0, 0, 0 );
+    // testBox nicely aligned on the floor with these values
+    // testBox.position.set( -100, 50, -50 );
+    // testBox.rotation.set( 0, 0, 0 );
     // these values can be changed without losing the reset coordinates above
-    testBox.position.set( -100, 50, -50 );
-    testBox.rotation.set( 0, 0, 0 );
+    testBox.position.set( -100, 90, -50 );
+    // rotation handled in render function at the moment    
     
     scene.add( testBox );
 }
@@ -166,17 +179,35 @@ function drawTestSphere() {
     // sphere nicely aligned on the floor with these values
     // sphere.position.set( 100, 50, -50 );
     // sphere.rotation.set( 0, 0, 0 );
-    // these values can be changed without losing the reset coordinates above (obviously ;-)
+    // these values can be changed without losing the reset coordinates above
     testSphere.position.set( 100, 50, -50 );
     testSphere.rotation.set( 0, 0, 0 );
     
     scene.add( testSphere );
 }
 
-// calling box from class
+// calling box-geometry from the Box class
 function drawClassBox() {
      var classBox = new Box();
+
+     // positioning the Box (positioning an object from a class)
+      classBox.box.position.set( 0, 15, -15 );
+
      scene.add( classBox.box );  
+}
+
+/////////////////////////////
+// ANIMATING and RENDERING //
+/////////////////////////////
+
+// removed the extra animate() function since the rendering code has so few lines
+function render() {
+    requestAnimationFrame( render );
+
+    testBox.rotation.x += 0.01;
+ 	testBox.rotation.y += 0.01;
+
+    renderer.render(scene, camera);
 }
 
 function onResize() {
@@ -188,20 +219,7 @@ function onResize() {
     renderer.setSize(width, height);
 }
 
-///////////////////////////
-// RUNNING AND ANIMATING //
-///////////////////////////
-
-// animate function activates the render function and updates renderer to get animations going
-function animate() {
-    requestAnimationFrame(animate);
-    render();
-}
-function render() {
-    // animation code for objects here    
-    
-    renderer.render(scene, camera);
-}
 // running the three.js code
 init();
-animate();
+// animate() replaced by render()
+render();
