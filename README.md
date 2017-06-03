@@ -7,9 +7,6 @@ Suitable for [Webpack](https://webpack.github.io/) and [three.js](https://threej
 I learned a lot from several online sources.<br>
 See the credits below!
 
-Test line
-Test line 2
-
 ## Project Goal
 To have an environment set up for developing a three.js site, running in combination with Webpack. You'll even have React, Bootstrap, Pug, Babel and Sass installed. And of course Hot Module Reloading and Webpack Dev Server.
 
