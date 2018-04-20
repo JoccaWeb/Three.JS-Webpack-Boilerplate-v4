@@ -5,10 +5,9 @@ By [JoccaWeb](http://joccaweb.nl/ "My frontend portfolio").
 ## Project Goal
 To have an environment set up for developing a three.js site, running in combination with Webpack. This way you can make a 3D experience with javascript. The three.js library handles the complicated webgl programming needed for 3D.
 
-You'll even have React, Bootstrap, Pug, Babel and Sass installed. And of course Hot Module Reloading and Webpack Dev Server.
-This project assumes intermediate knowledge of HTML5, CSS3 and vanilla JavaScript.<br>
+This project has React, Bootstrap, Pug, Babel and Sass installed, including Hot Module Reloading and Webpack Dev Server.
+Intermediate knowledge of HTML5, CSS3 and vanilla JavaScript is assumed.<br>
 Suitable for [Webpack](https://webpack.github.io/) and [three.js](https://threejs.org/) beginners. 
-I learned a lot from several online sources.
 
 ## Development Log:
 `First off`<br>
