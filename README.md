@@ -1,18 +1,18 @@
-# Three.JS-Webpack-Boilerplate-v4
+# A Three.JS-Webpack Boilerplate
 
 By [JoccaWeb](http://joccaweb.nl/ "My frontend portfolio"). 
 
+## Project Goal
+To have an environment set up for developing a three.js site, running in combination with Webpack. This way you can make a 3D experience with javascript. The three.js library handles the complicated webgl programming needed for 3D.
+
+You'll even have React, Bootstrap, Pug, Babel and Sass installed. And of course Hot Module Reloading and Webpack Dev Server.
 This project assumes intermediate knowledge of HTML5, CSS3 and vanilla JavaScript.<br>
 Suitable for [Webpack](https://webpack.github.io/) and [three.js](https://threejs.org/) beginners. 
-I learned a lot from several online sources.<br>
-See the credits below!
-
-## Project Goal
-To have an environment set up for developing a three.js site, running in combination with Webpack. You'll even have React, Bootstrap, Pug, Babel and Sass installed. And of course Hot Module Reloading and Webpack Dev Server.
+I learned a lot from several online sources.
 
 ## Development Log:
 `First off`<br>
-See the (many!) comments in app.js for code explanation.
+See the comments in app.js for code explanation. In this weblog i list the issues i ran into:
 
 `Window resize`<br>
 On [NPMJS.com](https://www.npmjs.com/package/three-window-resize) we can see the NPM version of the THREEx.WindowResize.js code. Can also be done with a little custom code, see app.js. THREEx.WindowResize.js not needed apparently?
@@ -24,11 +24,11 @@ Or without NPM:<br>
 From [the controls files from three.js](https://github.com/mrdoob/three.js/tree/master/examples/js/controls) you can go to
 [the Orbit Controls file](https://github.com/mrdoob/three.js/blob/master/examples/js/controls/OrbitControls.js).
 
-OrbitControls.js contains 1040 lines of code, no point in reinventing the wheel i'd say.<br>
-So I copied OrbitControls.js to src/js, imported it in app.js, and added a global variable. Did it work? No!<br>
-OrbitControls keeps being undefined because of THREE being in the local scope or not or alledgedly, ah well...
+Used OrbitControls.js.<br>
+I copied OrbitControls.js to src/js, imported it in app.js, and added a global variable. Did it work? No!<br>
+OrbitControls keeps being undefined because of THREE being in the local scope?
 
-Anyhoo: [three-orbitcontrols](https://www.npmjs.com/package/three-orbitcontrols) works!
+[three-orbitcontrols](https://www.npmjs.com/package/three-orbitcontrols) works!
 
 `OO programming and three.js`<br>
 The [Dino Skater](https://codepen.io/elliepooh/pen/JNjgwy) example was handy for brushing up on the basics of OO programming, which is very much needed for three.js scenes.
