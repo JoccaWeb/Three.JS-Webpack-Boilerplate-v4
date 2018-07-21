@@ -1,6 +1,7 @@
 # A Three.JS-Webpack Boilerplate
 
-By [JoccaWeb](http://joccaweb.nl/ "My frontend portfolio"). 
+By [JoccaWeb](http://joccaweb.nl/ "My frontend portfolio").
+June 2017
 
 ## Project Goal
 To have an environment set up for developing a three.js site, running in combination with Webpack. This way you can make a 3D experience with javascript. The three.js library handles the complicated webgl programming needed for 3D.
